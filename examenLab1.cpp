@@ -9,7 +9,7 @@ int** crearMatriz();
 bool Ganador(int**);
 void Impresion(int**);
 bool Validacion(int**, int, int,int, int);
-int** Validacion2(int**, int, int);
+int** Validacion2(int**, int, int, int);
 
 int main(int argc, char* argv []){
 	int menu=1;
@@ -18,11 +18,12 @@ int main(int argc, char* argv []){
 	while(menu==1){
 		int** matriz = crearMatriz();
 		cout << "Ingresar la po";
-		while(Ganador(matriz) == false){
-			int v1, v2;
-			int p11, p12;
-			int p21, p22;
-			Impresion();
+		int v1=1, v2=1;
+		int p11=5, p12=5;
+		int p21=5, p22=5;
+		while((Ganador(matriz) == false) || ((Validacion(matriz, p11, p12, v1, v2)) || (Validacion(matriz, p21, p22, v1, v2)) )  ){
+			Impresion(matriz);
+			cout<< "Jugador "<< turno;
 			cout<< "Ingrese posicion de la fila: ";
 			cin >> v1;
 			cout << "Ingrese posicion de la columna: ";
@@ -36,19 +37,18 @@ int main(int argc, char* argv []){
 				p22 = v2;
 			}
 			while(!(Validacion(matriz, p11, p12, v1, v2)) || (Validacion(matriz, p21, p22, v1, v2))){
-				cout << "Error en las posiciones ingresadas"
+				cout << "Error en las posiciones ingresadas";
 				cout<< "Ingrese posicion de la fila: ";
 				cin >> v1;
 				cout << "Ingrese posicion de la columna: ";
 				cin >> v2;
 			}
 			matriz[v1][v2] = turno;
-
+			matriz = Validacion2 (matriz, v1, v2, turno);
 			if(turno%2 == 0){
 				turno = 1;
 				p11 = v1;
 				p12 = v2;
-				
 			}else{
 				turno = 2;
 				p21 = v1;
@@ -96,36 +96,43 @@ bool Validacion(int** matriz, int p1, int p2, int v1, int v2){
 			vali = true;
 		}
 	}
-	if(!((v1 > 0) && (v1 < 7)){
+	if(!((v1 > 0) && (v1 < 7))){
 		vali = false;
 	}
 	return vali;
 }
 
-int** Validacion2(int**matriz, int a, int b){
-	if((v1 == p1-i)&&(v2 == p2-i)){
-		vali = true;
+int** Validacion2(int**matriz, int p1, int p2, int turno){
+	int i=1;	// contrario es el numero del equipo contrario
+	int contrario;
+	if(contrario%2 == 0){
+		turno = 1;
+	}else{
+		turno = 2;
 	}
-	if((v1 == p1+i)&&(v2 == p2+i)){
-		vali = true;
+	if(matriz[p1-i][p2-i] == contrario){
+		matriz[p1-i][p2-i] = turno;
 	}
-	if((v1 == p1-i)&&(v2 == p2+i)){
-		vali = true;
+	if(matriz[p1+i][p2+i] == contrario){
+		matriz[p1+i][p2+i] = turno;
 	}
-	if((v1 == p1+i)&&(v2 == p2-i)){
-		vali = true;
+	if(matriz[p1-i][p2+i] == contrario){
+		matriz[p1-i][p2+i] = turno;
 	}
-	if((v1 == p1+i)&&(v2 == p2)){
-		vali = true;
+	if(matriz[p1+i][p2-i] == contrario){
+		matriz[p1+i][p2-i] = turno;
 	}
-	if((v1 == p1-i)&&(v2 == p2)){
-		vali = true;
+	if(matriz[p1+i][p2] == contrario){
+		matriz[p1+i][p2] = turno;
 	}
-	if((v1 == p1)&&(v2 == p2+i)){
-		vali = true;
+	if(matriz[p1-i][p2] == contrario){
+		matriz[p1-i][p2] = turno;
 	}
-	if((v1 == p1)&&(v2 == p2-i)){
-		vali = true;
+	if(matriz[p1][p2+i] == contrario){
+		matriz[p1][p2+i] = turno;
+	}
+	if(matriz[p1][p2-i] == contrario){
+		matriz[p1][p2-i] = turno;
 	}
 	return matriz;
 }
