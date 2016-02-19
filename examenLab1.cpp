@@ -9,7 +9,7 @@ int** crearMatriz();
 bool Ganador(int**);
 void Impresion(int**);
 bool Validacion(int**, int, int,int, int);
-
+int** Validacion2(int**, int, int);
 
 int main(int argc, char* argv []){
 	int menu=1;
@@ -22,6 +22,7 @@ int main(int argc, char* argv []){
 			int v1, v2;
 			int p11, p12;
 			int p21, p22;
+			Impresion();
 			cout<< "Ingrese posicion de la fila: ";
 			cin >> v1;
 			cout << "Ingrese posicion de la columna: ";
@@ -34,14 +35,24 @@ int main(int argc, char* argv []){
 				p21 = v1;
 				p22 = v2;
 			}
-			while((Validacion(matriz, p11, p12, v1, v2)) || (Validacion(matriz, p21, p22, v1, v2))){
-
+			while(!(Validacion(matriz, p11, p12, v1, v2)) || (Validacion(matriz, p21, p22, v1, v2))){
+				cout << "Error en las posiciones ingresadas"
+				cout<< "Ingrese posicion de la fila: ";
+				cin >> v1;
+				cout << "Ingrese posicion de la columna: ";
+				cin >> v2;
 			}
+			matriz[v1][v2] = turno;
+
 			if(turno%2 == 0){
 				turno = 1;
+				p11 = v1;
+				p12 = v2;
 				
 			}else{
 				turno = 2;
+				p21 = v1;
+				p22 = v2;
 			}
 			primera++;
 		}
@@ -81,8 +92,42 @@ bool Validacion(int** matriz, int p1, int p2, int v1, int v2){
 			}
 
 		}
+		if((p1 == v1) && (p2==v2)){
+			vali = true;
+		}
+	}
+	if(!((v1 > 0) && (v1 < 7)){
+		vali = false;
 	}
 	return vali;
+}
+
+int** Validacion2(int**matriz, int a, int b){
+	if((v1 == p1-i)&&(v2 == p2-i)){
+		vali = true;
+	}
+	if((v1 == p1+i)&&(v2 == p2+i)){
+		vali = true;
+	}
+	if((v1 == p1-i)&&(v2 == p2+i)){
+		vali = true;
+	}
+	if((v1 == p1+i)&&(v2 == p2-i)){
+		vali = true;
+	}
+	if((v1 == p1+i)&&(v2 == p2)){
+		vali = true;
+	}
+	if((v1 == p1-i)&&(v2 == p2)){
+		vali = true;
+	}
+	if((v1 == p1)&&(v2 == p2+i)){
+		vali = true;
+	}
+	if((v1 == p1)&&(v2 == p2-i)){
+		vali = true;
+	}
+	return matriz;
 }
 
 void Impresion(int** matriz){
