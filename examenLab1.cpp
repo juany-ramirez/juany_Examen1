@@ -14,10 +14,36 @@ bool Validacion(int**, int, int,int, int);
 int main(int argc, char* argv []){
 	int menu=1;
 	int turno = 1;
+	int primera = 0;
 	while(menu==1){
 		int** matriz = crearMatriz();
+		cout << "Ingresar la po";
 		while(Ganador(matriz) == false){
+			int v1, v2;
+			int p11, p12;
+			int p21, p22;
+			cout<< "Ingrese posicion de la fila: ";
+			cin >> v1;
+			cout << "Ingrese posicion de la columna: ";
+			cin >> v2;
+			if(primera == 0){
+				p11 = v1;
+				p12 = v2;
+			}
+			if(primera == 1){
+				p21 = v1;
+				p22 = v2;
+			}
+			while((Validacion(matriz, p11, p12, v1, v2)) || (Validacion(matriz, p21, p22, v1, v2))){
 
+			}
+			if(turno%2 == 0){
+				turno = 1;
+				
+			}else{
+				turno = 2;
+			}
+			primera++;
 		}
 		eliminarMatriz(matriz);
 		cout<< "Ingresar opicon del menu"<<endl<<"1. Seguir jugando" << endl << "2. Salir";
@@ -89,15 +115,20 @@ bool Ganador(int** matriz){
 int** crearMatriz(){
 	int** matriz = new int*[7];
 	for(int i=0;i<7;i++){
-		matriz[i][]= new int[7];		
+		matriz[i]= new int[7];		
 	}
+	for(int i=0;i<7;i++){
+            for(int j=0;j<7;j++){
+                matriz[i][j]= 0;
+        }
+    }
 	return matriz;
 }
 
 void eliminarMatriz(int** matriz){
 	for(int i=0;i<7;i++){
             for(int j=0;j<7;j++){
-                delete[] matriz[i][j];
+                delete[] matriz[i];
         }
     }
 	delete[] matriz;
