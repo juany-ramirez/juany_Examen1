@@ -1,0 +1,58 @@
+#include <iostream>
+
+using std::cin;
+using std::cout;
+using std::endl;
+
+void eliminarMatriz(int**);
+int** crearMatriz();
+bool Ganador(int**);
+void Impresion(matriz);
+
+int main(int argc, char* argv []){
+	int menu=1;
+	while(menu==1){
+		int** matriz = crearMatriz();
+		while(ganador == false){
+
+		}
+		eliminarMatriz();
+		cout<< "Ingresar opicon del menu"<<endl<<"1. Seguir jugando" << endl << "2. Salir";
+		cin>> menu;
+	}
+}
+
+
+
+bool Ganador(int** matriz){
+	bool ganador = true;
+	for(int i=0; i<12; i++){
+                for(int j=0; j<12; j++){
+                        if(cubo1[i][j] == 0){
+                                ganador = false;
+                        }
+            }
+    }
+	return ganador;		
+}
+
+int** crearMatriz(){
+	int** matriz= new int**;
+	for(int i=0;i<7i++){
+		for(int j=0;j<7;j++){
+			matriz[i]= new int[7];		
+		}
+	}
+	return matriz;
+}
+
+void eliminarMatriz(int** matriz){
+	for(int i=0;i<7i++){
+            for(int j=0;j<7j++){
+                delete[] matriz[i][j];
+        } 
+    }
+	delete[] matriz;
+	return;
+} 
+
