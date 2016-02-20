@@ -62,35 +62,73 @@ int main(int argc, char* argv []){
 	}
 }
 
-bool Validacion(int** matriz, int p1, int p2, int v1, int v2){
-	bool vali=false;
+bool Validacion(int** matriz, int p1, int p2, int v1, int v2){// p = posicion
+	bool vali=false;// v = posicion nueva
 	if(matriz [v1][v2] == 0){
 		for(int i=1; i<3; i++){
-			if((v1 == p1-i)&&(v2 == p2-i)){
-				vali = true;
-			}
-			if((v1 == p1+i)&&(v2 == p2+i)){
-				vali = true;
-			}
-			if((v1 == p1-i)&&(v2 == p2+i)){
-				vali = true;
-			}
-			if((v1 == p1+i)&&(v2 == p2-i)){
-				vali = true;
-			}
-			if((v1 == p1+i)&&(v2 == p2)){
-				vali = true;
-			}
-			if((v1 == p1-i)&&(v2 == p2)){
-				vali = true;
-			}
-			if((v1 == p1)&&(v2 == p2+i)){
-				vali = true;
-			}
-			if((v1 == p1)&&(v2 == p2-i)){
-				vali = true;
+			if(!(i==1) && ((p1 == 0) || (p2 == 0)) {
+				if(!(i==2) && ((p1 == 5) || (p1 == 1) || (p2 == 5) || (p2 == 1)) {
+					if((v1 == p1-i)&&(v2 == p2-i)){
+						vali = true;
+					}
+				}
 			}
 
+			if(!(i==1) && ((p1 == 6) || (p2 == 6) ){
+				if(!(i==2) && ((p1 == 5) || (p1 == 1) || (p2 == 5) || (p2 == 1)) {
+					if((v1 == p1+i)&&(v2 == p2+i)){
+						vali = true;
+					}
+				}
+			}
+
+			if(!(i==1) && ((p1 == 0) || (p2 == 6)  ){
+				if(!(i==2) && ((p1 == 5) || (p1 == 1) || (p2 == 5) || (p2 == 1)) {
+					if((v1 == p1-i)&&(v2 == p2+i)){
+						vali = true;
+					}
+				}
+			}
+
+			if(!(i==1) && ((p1 == 6) || (p1 == 0) || (p2 == 6) || (p2 == 0) ){
+				if(!(i==2) && ((p1 == 5) || (p1 == 1) || (p2 == 5) || (p2 == 1)) {
+					if((v1 == p1+i)&&(v2 == p2-i)){
+						vali = true;
+					}
+				}
+			}
+
+			if(!(i==1) && ((p1 == 6) || (p1 == 0) || (p2 == 6) || (p2 == 0) ){
+				if(!(i==2) && ((p1 == 5) || (p1 == 1) || (p2 == 5) || (p2 == 1)) {
+					if((v1 == p1+i)&&(v2 == p2)){
+						vali = true;
+					}
+				}
+			}
+
+			if(!(i==1) && ((p1 == 6) || (p1 == 0) || (p2 == 6) || (p2 == 0) ){
+				if(!(i==2) && ((p1 == 5) || (p1 == 1) || (p2 == 5) || (p2 == 1)) {
+					if((v1 == p1-i)&&(v2 == p2)){
+						vali = true;
+					}
+				}
+			}	
+
+			if(!(i==1) && ((p1 == 6) || (p1 == 0) || (p2 == 6) || (p2 == 0) ){
+				if(!(i==2) && ((p1 == 5) || (p1 == 1) || (p2 == 5) || (p2 == 1)) {
+					if((v1 == p1)&&(v2 == p2+i)){
+						vali = true;
+					}
+				}
+			}
+
+			if(!(i==1) && ((p1 == 6) || (p1 == 0) || (p2 == 6) || (p2 == 0) ){
+				if(!(i==2) && ((p1 == 5) || (p1 == 1) || (p2 == 5) || (p2 == 1)) {
+					if((v1 == p1)&&(v2 == p2-i)){
+						vali = true;
+					}
+				}
+			}
 		}
 		if((p1 == v1) && (p2==v2)){
 			vali = true;
@@ -100,6 +138,12 @@ bool Validacion(int** matriz, int p1, int p2, int v1, int v2){
 		vali = false;
 	}
 	return vali;
+}
+
+
+
+bool Segmentation (int i){
+
 }
 
 int** Validacion2(int**matriz, int p1, int p2, int turno){
